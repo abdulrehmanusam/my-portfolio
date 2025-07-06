@@ -1,13 +1,48 @@
-/* About Section */
-.about-section {
-  padding: 100px 60px;
-  background: linear-gradient(to bottom right, #0a0a23, #111133);
-  color: #ffffff;
-  font-family: 'Segoe UI', sans-serif;
-  overflow: hidden;
+/* ========== Global Settings ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Section Header */
+:root {
+  --primary: #00ffff;
+  --secondary: #00c3ff;
+  --bg-start: #0a0a23;
+  --bg-end: #111133;
+  --text-light: #ffffff;
+  --text-muted: #d1d1d1;
+  --skill-glow: rgba(0, 255, 255, 0.2);
+}
+
+/* ========== About Section ========== */
+.about-section {
+  padding: 100px 60px;
+  background: linear-gradient(to bottom right, var(--bg-start), var(--bg-end));
+  color: var(--text-light);
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at center, #00ffff22 0%, transparent 80%);
+  animation: bgPulse 10s ease-in-out infinite;
+  z-index: 0;
+}
+
+.about-section * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ========== Section Header ========== */
 .about-header {
   text-align: center;
   margin-bottom: 50px;
@@ -15,12 +50,12 @@
 
 .about-header h2 {
   font-size: 3rem;
-  color: #00ffff;
-  background: linear-gradient(90deg, #00ffff, #00c3ff);
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
   animation: pulse 2s infinite alternate;
+  margin-bottom: 10px;
 }
 
 .about-header p {
@@ -28,23 +63,28 @@
   font-size: 1.2rem;
   font-weight: 300;
   letter-spacing: 1px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
-/* About Content */
+/* ========== Content ========== */
 .about-content {
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
+  padding: 0 20px;
 }
 
 .about-description {
   font-size: 1.1rem;
-  color: #d1d1d1;
+  color: var(--text-muted);
   margin-bottom: 60px;
   line-height: 1.7;
+  text-shadow: 0 0 5px #00ffff33;
 }
 
-/* Skills Grid */
+/* ========== Skills Grid ========== */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -52,7 +92,7 @@
   justify-content: center;
 }
 
-/* Skill Cards */
+/* ========== Skill Cards ========== */
 .skill-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -61,19 +101,20 @@
   text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
-  position: relative;
+  backdrop-filter: blur(4px);
   overflow: hidden;
 }
 
 .skill-card:hover {
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 25px var(--skill-glow);
   background: rgba(0, 255, 255, 0.05);
   transform: translateY(-4px);
 }
 
+/* ========== Skill Icons ========== */
 .skill-icon {
   font-size: 2.5rem;
-  color: #00ffff;
+  color: var(--primary);
   margin-bottom: 10px;
   animation: float 2.5s ease-in-out infinite;
 }
@@ -82,9 +123,10 @@
   font-size: 1.2rem;
   margin-bottom: 15px;
   color: #fff;
+  letter-spacing: 0.5px;
 }
 
-/* Progress Bar */
+/* ========== Progress Bar ========== */
 .progress-bar {
   background: rgba(255, 255, 255, 0.05);
   height: 12px;
@@ -92,36 +134,63 @@
   overflow: hidden;
   width: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
 .progress-fill {
   height: 100%;
   border-radius: 6px;
-  background: linear-gradient(to right, #00ffff, #0099cc);
-  animation: fillAnim 2s ease-out forwards;
-  transition: width 1s ease-in-out;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  animation: fillBar 2s ease-out forwards;
+  width: 0%;
 }
 
-/* Floating icon animation */
+@keyframes fillBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* ========== Animations ========== */
 @keyframes float {
   0% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
   100% { transform: translateY(0); }
 }
 
-/* Pulse animation for heading */
 @keyframes pulse {
   from { transform: scale(1); }
   to { transform: scale(1.04); }
 }
 
-/* Progress fill animation */
-@keyframes fillAnim {
-  0% { width: 0%; }
-  100% { width: 100%; }
+@keyframes bgPulse {
+  0% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.1); opacity: 0.35; }
+  100% { transform: scale(1); opacity: 0.2; }
 }
 
-/* Responsive */
+/* ========== Responsive Design ========== */
+@media (max-width: 992px) {
+  .about-section {
+    padding: 80px 40px;
+  }
+
+  .about-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .about-description {
+    font-size: 1.05rem;
+  }
+
+  .skills-grid {
+    gap: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .about-section {
     padding: 60px 30px;
@@ -133,5 +202,35 @@
 
   .about-description {
     font-size: 1rem;
+  }
+
+  .skill-icon {
+    font-size: 2rem;
+  }
+
+  .skill-card h4 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 50px 20px;
+  }
+
+  .about-header h2 {
+    font-size: 2rem;
+  }
+
+  .about-description {
+    font-size: 0.95rem;
+  }
+
+  .skill-icon {
+    font-size: 1.8rem;
+  }
+
+  .skill-card {
+    padding: 20px;
   }
 }

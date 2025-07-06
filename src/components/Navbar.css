@@ -1,113 +1,275 @@
-/* Global resets */
+/* ========== Global Reset ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #00ffff;
+  --text-light: #ffffff;
+  --text-dark: #000000;
+  --bg-dark: rgba(10, 10, 10, 0.65);
+  --bg-dark-scrolled: rgba(0, 0, 0, 0.85);
+  --bg-light: rgba(255, 255, 255, 0.75);
+  --bg-light-menu: rgba(255, 255, 255, 0.95);
+  --bg-dark-menu: rgba(0, 0, 0, 0.95);
+  --blur: blur(16px);
+  --transition: 0.3s ease;
+}
+
+/* ========== Body ========== */
+body.light-mode {
+  background-color: #f7f7f7;
+  color: var(--text-dark);
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  color: var(--text-light);
+}
+
+/* ========== Navbar Base ========== */
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 999;
   padding: 20px 50px;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: var(--blur);
+  background: var(--bg-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: var(--transition);
+  animation: fadeSlideDown 0.6s ease-out forwards;
 }
 
 .navbar.scrolled {
-  background: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  background: var(--bg-dark-scrolled);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
+body.light-mode .navbar {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ========== Navbar Layout ========== */
 .navbar-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
+/* ========== Logo ========== */
 .logo {
   font-size: 2rem;
   font-weight: bold;
-  color: #00ffff;
+  color: var(--primary-color);
+  animation: glowLogo 2s ease-in-out infinite alternate;
+  transition: transform var(--transition);
   cursor: pointer;
 }
 
-.logo span {
-  color: #ffffff;
+.logo:hover {
+  transform: scale(1.08);
 }
 
-/* Desktop links */
+.logo span {
+  color: var(--text-light);
+}
+body.light-mode .logo span {
+  color: var(--text-dark);
+}
+
+/* ========== Desktop Links ========== */
 .desktop-links {
   display: flex;
   gap: 30px;
 }
 
 .desktop-links a {
-  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s;
+  position: relative;
+  color: var(--text-light);
+  transition: var(--transition);
+  padding: 5px 8px;
+}
+
+.desktop-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.4s ease;
 }
 
 .desktop-links a:hover {
-  color: #00ffff;
-  text-shadow: 0 0 10px #00ffff;
+  color: var(--primary-color);
+  text-shadow: 0 0 8px var(--primary-color);
 }
 
-/* Hamburger */
+.desktop-links a:hover::after {
+  width: 100%;
+}
+
+body.light-mode .desktop-links a {
+  color: var(--text-dark);
+}
+
+/* ========== Theme Toggle ========== */
+.theme-toggle {
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: transform var(--transition);
+  margin-left: 20px;
+}
+
+.theme-toggle:hover {
+  color: var(--primary-color);
+  transform: scale(1.2);
+}
+body.light-mode .theme-toggle {
+  color: var(--text-dark);
+}
+
+/* ========== Hamburger Icon ========== */
 .hamburger {
   display: none;
   cursor: pointer;
+  transition: transform var(--transition);
 }
 
-.hamburger .bar {
-  width: 25px;
-  height: 3px;
-  background-color: #fff;
-  margin: 5px;
-  transition: 0.4s;
+.hamburger:hover {
+  transform: scale(1.1);
 }
 
-.bar.open {
-  transform: rotate(45deg);
+/* Use icons instead of bars now */
+.hamburger svg {
+  color: var(--text-light);
+}
+body.light-mode .hamburger svg {
+  color: var(--text-dark);
 }
 
-/* Theme toggle */
-.theme-toggle {
-  font-size: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  margin-left: 20px;
-  color: #fff;
-}
-
-/* Mobile menu */
+/* ========== Mobile Menu ========== */
 .mobile-menu {
-  display: none;
+  display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 30px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 30px 20px;
+  background: var(--bg-dark-menu);
+  animation: fadeInMenu 0.5s ease;
+  z-index: 998;
+}
+
+body.light-mode .mobile-menu {
+  background: var(--bg-light-menu);
 }
 
 .mobile-menu a {
-  color: #00ffff;
-  margin-bottom: 20px;
+  color: var(--primary-color);
   font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: var(--transition);
 }
 
-body.light-mode {
-  background: #f7f7f7;
-  color: #000;
+.mobile-menu a:hover {
+  color: var(--text-light);
+  text-shadow: 0 0 10px var(--primary-color);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+body.light-mode .mobile-menu a {
+  color: #007777;
+}
+body.light-mode .mobile-menu a:hover {
+  color: var(--text-dark);
+  text-shadow: 0 0 10px #00ffff88;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 992px) {
   .desktop-links {
     display: none;
   }
+
   .hamburger {
     display: block;
   }
-  .mobile-menu {
+
+  .hamburger.open + .mobile-menu {
     display: flex;
+  }
+
+  .navbar {
+    padding: 15px 30px;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .mobile-menu a {
+    font-size: 16px;
+  }
+
+  .theme-toggle {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+}
+
+/* ========== Animations ========== */
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInMenu {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes glowLogo {
+  0% {
+    text-shadow: 0 0 10px var(--primary-color);
+  }
+  100% {
+    text-shadow: 0 0 20px var(--primary-color), 0 0 40px #00ffffaa;
   }
 }

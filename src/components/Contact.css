@@ -1,54 +1,66 @@
+/* Contact Section */
 .contact-section {
   padding: 100px 60px;
   background: linear-gradient(to right, #1f1f2f, #12121d);
   color: #fff;
   position: relative;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* Section Header */
 .contact-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
 .contact-header h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   background: linear-gradient(to right, #00ffff, #00c3ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: pulse 2s infinite alternate;
 }
 
 .contact-header p {
   font-size: 1.1rem;
   color: #ccc;
   margin-top: 10px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* Contact Form */
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  padding: 0 10px;
 }
 
 .contact-form input,
 .contact-form textarea {
   padding: 16px 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
   color: #fff;
   font-size: 1rem;
-  transition: border 0.3s;
+  transition: border 0.3s, box-shadow 0.3s;
+  resize: none;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   border: 1px solid #00ffff;
   outline: none;
-  box-shadow: 0 0 5px #00ffff;
+  box-shadow: 0 0 10px #00ffffaa;
 }
 
+/* Submit Button */
 .send-button {
   padding: 14px 28px;
   font-size: 1.1rem;
@@ -63,9 +75,11 @@
 }
 
 .send-button:hover {
-  box-shadow: 0 0 30px #00ffffaa;
+  box-shadow: 0 0 30px #00ffffcc;
+  transform: translateY(-2px);
 }
 
+/* Form Status */
 .form-status {
   text-align: center;
   margin-top: 20px;
@@ -73,9 +87,58 @@
   font-weight: bold;
 }
 
-/* Responsive */
+/* Responsive Styling */
+@media (max-width: 992px) {
+  .contact-section {
+    padding: 80px 40px;
+  }
+
+  .contact-header h2 {
+    font-size: 2.4rem;
+  }
+
+  .contact-header p {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .contact-section {
-    padding: 80px 30px;
+    padding: 70px 30px;
   }
+
+  .contact-form {
+    gap: 20px;
+  }
+
+  .send-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 60px 20px;
+  }
+
+  .contact-header h2 {
+    font-size: 2rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 14px 16px;
+  }
+
+  .send-button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+}
+
+/* Reuse animation */
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.04); }
 }

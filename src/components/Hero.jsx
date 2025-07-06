@@ -2,7 +2,7 @@ import React from 'react';
 import './Hero.css';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-
+import abdulrahman from './abdulrahman.png'
 const Hero = () => {
   return (
     <section className="hero-section">
@@ -70,7 +70,7 @@ const Hero = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
       >
-        <img src="https://i.ibb.co/FHxKZDF/avatar1.png" alt="avatar" className="avatar-img" />
+        <img src={abdulrahman} alt="avatar" className="avatar-img" />
       </motion.div>
     </section>
   );

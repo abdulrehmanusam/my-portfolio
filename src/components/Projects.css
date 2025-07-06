@@ -1,9 +1,12 @@
+/* Projects Section */
 .projects-section {
   padding: 100px 60px;
   background: linear-gradient(to right, #1a1a2e, #1f4068);
   color: #fff;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* Header */
 .projects-header {
   text-align: center;
   margin-bottom: 60px;
@@ -14,20 +17,24 @@
   background: linear-gradient(to right, #00ffff, #00c3ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: pulseGlow 2s infinite alternate;
 }
 
 .projects-header p {
   color: #ccc;
   font-size: 1.1rem;
   margin-top: 10px;
+  line-height: 1.6;
 }
 
+/* Grid Layout */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
 }
 
+/* Project Card */
 .project-card {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -44,13 +51,15 @@
   box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
 }
 
+/* Image */
 .project-image img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 200px;
   object-fit: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Content */
 .project-content {
   padding: 25px;
 }
@@ -58,14 +67,17 @@
 .project-content h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
+  color: #ffffff;
 }
 
 .project-content p {
   color: #ccc;
   font-size: 1rem;
   margin-bottom: 20px;
+  line-height: 1.6;
 }
 
+/* Tags */
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -80,29 +92,76 @@
   border-radius: 8px;
   font-size: 0.85rem;
   border: 1px solid #00ffff55;
+  transition: background 0.3s ease;
+}
+
+.tag:hover {
+  background: #00ffff33;
+}
+
+/* Links */
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .project-links a {
   display: inline-flex;
   align-items: center;
-  margin-right: 20px;
   color: #00ffff;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .project-links a svg {
   margin-right: 6px;
+  font-size: 1.1rem;
 }
 
 .project-links a:hover {
   color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Pulse Animation */
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 10px #00ffff;
+  }
+  to {
+    text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff99;
+  }
 }
 
 /* Responsive */
+@media (max-width: 992px) {
+  .project-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .projects-header h2 {
+    font-size: 2.3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .projects-section {
     padding: 80px 30px;
+  }
+
+  .projects-grid {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-header h2 {
+    font-size: 2rem;
+  }
+
+  .project-content p {
+    font-size: 0.95rem;
   }
 }

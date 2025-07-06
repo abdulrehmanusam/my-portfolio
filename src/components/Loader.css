@@ -1,3 +1,4 @@
+Loader Overlay
 .loader-container {
   position: fixed;
   top: 0;
@@ -10,8 +11,10 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  overflow: hidden;
 }
 
+/* Rotating Circle */
 .loader-circle {
   width: 100px;
   height: 100px;
@@ -20,32 +23,59 @@
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 30px;
-  box-shadow: 0 0 20px #00ffff99;
+  box-shadow: 0 0 20px #00ffff99, 0 0 40px #00ffff55;
+  transition: all 0.3s ease;
 }
 
+/* Loader Text */
 .loader-text {
   color: #00ffff;
   font-size: 1.8rem;
   font-family: 'Segoe UI', sans-serif;
   animation: flicker 2s infinite alternate;
+  text-shadow: 0 0 10px #00ffff;
 }
 
 /* Spinner animation */
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Flicker glow animation */
 @keyframes flicker {
-  from {
-    text-shadow: 0 0 10px #00ffff;
+  0% {
+    text-shadow: 0 0 8px #00ffff, 0 0 20px #00ffff88;
   }
-  to {
-    text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffffaa;
+  50% {
+    text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffffaa;
+  }
+  100% {
+    text-shadow: 0 0 10px #00ffff, 0 0 25px #00ffffbb;
+  }
+}
+
+/* Responsive Optimizations */
+@media (max-width: 768px) {
+  .loader-circle {
+    width: 80px;
+    height: 80px;
+    border-width: 5px;
+  }
+
+  .loader-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loader-circle {
+    width: 60px;
+    height: 60px;
+    border-width: 4px;
+  }
+
+  .loader-text {
+    font-size: 1.2rem;
   }
 }

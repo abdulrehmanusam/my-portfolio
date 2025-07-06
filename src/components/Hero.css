@@ -1,3 +1,4 @@
+/* Hero Section Container */
 .hero-section {
   display: flex;
   justify-content: space-between;
@@ -7,13 +8,19 @@
   min-height: 100vh;
   padding: 120px 60px;
   background: linear-gradient(120deg, #0e0e1a, #161631);
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  z-index: 1;
 }
 
+/* Text Section */
 .hero-text {
   flex: 1 1 500px;
   z-index: 2;
 }
 
+/* Title with Highlight */
 .hero-title {
   font-size: 3.5rem;
   font-weight: bold;
@@ -23,23 +30,26 @@
 }
 
 .hero-title .highlight {
-  color: #00ffff;
   background: linear-gradient(45deg, #00ffff, #0088ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: glow 2s ease-in-out infinite alternate;
 }
 
+/* Subtitle */
 .hero-subtitle {
   font-size: 1.3rem;
   color: #ccc;
   margin: 20px 0 40px 0;
   max-width: 500px;
+  line-height: 1.6;
 }
 
+/* Call to Action Buttons */
 .cta-buttons {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .btn-glow {
@@ -75,24 +85,30 @@
 .btn-outline:hover {
   background: #00ffff;
   color: #0e0e1a;
+  transform: scale(1.05);
 }
 
+/* Social Icons */
 .social-icons {
   margin-top: 40px;
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .social-icons a {
   color: #ffffff;
   font-size: 1.5rem;
-  transition: color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .social-icons a:hover {
   color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+  transform: scale(1.1);
 }
 
+/* Avatar / Image Section */
 .hero-avatar {
   flex: 1 1 400px;
   display: flex;
@@ -107,9 +123,14 @@
   border-radius: 50%;
   border: 4px solid #00ffff;
   box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+  transition: transform 0.3s ease;
 }
 
-/* Animations */
+.avatar-img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* Glow animation */
 @keyframes glow {
   from {
     text-shadow: 0 0 10px #00ffff;
@@ -119,12 +140,30 @@
   }
 }
 
-/* Responsive */
+/* Responsive Design */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .cta-buttons {
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-section {
     flex-direction: column;
     padding: 80px 30px;
     text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
   }
 
   .cta-buttons {
@@ -133,5 +172,29 @@
 
   .hero-avatar {
     margin-top: 40px;
+  }
+
+  .avatar-img {
+    width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .btn-glow,
+  .btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+
+  .avatar-img {
+    width: 200px;
   }
 }

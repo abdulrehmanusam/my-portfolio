@@ -7,7 +7,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
 import Loader from './components/Loader';
 import BackgroundScene from './components/BackgroundScene';
 
@@ -40,7 +39,7 @@ function App() {
   return (
     <div className="App">
       {/* 🔄 Preloader Animation */}
-      <Loader />
+      {/* <Loader /> */}
 
       {/* ✨ Animated Three.js Background */}
       <BackgroundScene />
@@ -68,8 +67,6 @@ function App() {
         <Contact />
       </section>
 
-      {/* 🔚 Footer */}
-      <Footer />
     </div>
   );
 }
