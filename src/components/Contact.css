@@ -1,0 +1,81 @@
+.contact-section {
+  padding: 100px 60px;
+  background: linear-gradient(to right, #1f1f2f, #12121d);
+  color: #fff;
+  position: relative;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.contact-header h2 {
+  font-size: 2.5rem;
+  background: linear-gradient(to right, #00ffff, #00c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-header p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border: 1px solid #00ffff;
+  outline: none;
+  box-shadow: 0 0 5px #00ffff;
+}
+
+.send-button {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  background: #00ffff;
+  color: #0e0e1a;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px #00ffff88;
+  transition: 0.3s ease;
+}
+
+.send-button:hover {
+  box-shadow: 0 0 30px #00ffffaa;
+}
+
+.form-status {
+  text-align: center;
+  margin-top: 20px;
+  color: #00ff99;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 30px;
+  }
+}

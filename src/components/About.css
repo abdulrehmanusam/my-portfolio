@@ -1,0 +1,137 @@
+/* About Section */
+.about-section {
+  padding: 100px 60px;
+  background: linear-gradient(to bottom right, #0a0a23, #111133);
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+/* Section Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-header h2 {
+  font-size: 3rem;
+  color: #00ffff;
+  background: linear-gradient(90deg, #00ffff, #00c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  animation: pulse 2s infinite alternate;
+}
+
+.about-header p {
+  color: #ccc;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* About Content */
+.about-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  color: #d1d1d1;
+  margin-bottom: 60px;
+  line-height: 1.7;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+/* Skill Cards */
+.skill-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  background: rgba(0, 255, 255, 0.05);
+  transform: translateY(-4px);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+  color: #00ffff;
+  margin-bottom: 10px;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.skill-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background: rgba(255, 255, 255, 0.05);
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(to right, #00ffff, #0099cc);
+  animation: fillAnim 2s ease-out forwards;
+  transition: width 1s ease-in-out;
+}
+
+/* Floating icon animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Pulse animation for heading */
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.04); }
+}
+
+/* Progress fill animation */
+@keyframes fillAnim {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 30px;
+  }
+
+  .about-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .about-description {
+    font-size: 1rem;
+  }
+}
